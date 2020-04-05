@@ -11,6 +11,11 @@ right_eye_cascade = cv2.CascadeClassifier('haarcascade_righteye_2splits.xml')
 left_eye_cascade = cv2.CascadeClassifier('haarcascade_lefteye_2splits.xml')
 
 cap = cv2.VideoCapture(0)
+if not cap.isOpened():
+    raise Exception("Could not open video device")
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 720)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
 
 while 1:
     ret, img = cap.read()
